@@ -27,17 +27,17 @@ main()
   IFS=' ' read -r -a plugins <<< $(get_tmux_option "@dracula-plugins" "battery network weather")
 
   # Dracula Color Pallette
-  white='#f8f8f2'
-  gray='#44475a'
-  dark_gray='#282a36'
-  light_purple='#bd93f9'
-  dark_purple='#6272a4'
-  cyan='#8be9fd'
-  green='#50fa7b'
-  orange='#ffb86c'
-  red='#ff5555'
-  pink='#ff79c6'
-  yellow='#f1fa8c'
+  white='#abb2bf'
+  gray='#5c6370'
+  dark_gray='#4b5263'
+  light_purple='#c678dd'
+  dark_purple='#61afef'
+  cyan='#56b6c2'
+  green='#98c379'
+  orange='#d19a66'
+  red='#be5046'
+  pink='#e06c75'
+  yellow='#e5c07b'
 
   # Handle left icon configuration
   case $show_left_icon in
