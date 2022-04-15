@@ -81,8 +81,8 @@ main()
       flags=""
       current_flags="";;
     true)
-      flags="#{?window_flags,#[fg=${purple}]#{window_flags},}"
-      current_flags="#{?window_flags,#[fg=${purple}]#{window_flags},}"
+      flags="#{?window_flags,#[fg=${cyan}]#{window_flags},}"
+      current_flags="#{?window_flags,#[fg=${cyan}]#{window_flags},}"
   esac
 
   # sets refresh interval to every 5 seconds
@@ -108,15 +108,15 @@ main()
   tmux set-option -g pane-border-style "fg=${gray}"
 
   # message styling
-  tmux set-option -g message-style "bg=${gray},fg=${white}"
+  tmux set-option -g message-style "bg=${black},fg=${white}"
 
   # status bar
-  tmux set-option -g status-style "bg=${gray},fg=${white}"
+  tmux set-option -g status-style "bg=${black},fg=${white}"
 
   # Status left
   if $show_powerline; then
-    tmux set-option -g status-left "#[bg=${green},fg=${black}]#{?client_prefix,#[bg=${yellow}],} ${left_icon} #[fg=${green},bg=${gray}]#{?client_prefix,#[fg=${yellow}],}${left_sep}"
-    powerbg=${gray}
+    tmux set-option -g status-left "#[bg=${green},fg=${black}]#{?client_prefix,#[bg=${yellow}],} ${left_icon} #[fg=${green},bg=${black}]#{?client_prefix,#[fg=${yellow}],}${left_sep}"
+    powerbg=${black}
   else
     tmux set-option -g status-left "#[bg=${green},fg=${black}]#{?client_prefix,#[bg=${yellow}],} ${left_icon}"
   fi
@@ -201,9 +201,9 @@ main()
 
   # Window option
   if $show_powerline; then
-    tmux set-window-option -g window-status-current-format "#[fg=${black},bg=${purple}]${left_sep}#[fg=${black},bg=${purple}] #I #W${current_flags} #[fg=${purple},bg=${gray}]${left_sep}"
+    tmux set-window-option -g window-status-current-format "#[fg=${black},bg=${pink}]${left_sep}#[fg=${black},bg=${pink}] #I #W${current_flags} #[fg=${pink},bg=${gray}]${left_sep}"
   else
-    tmux set-window-option -g window-status-current-format "#[fg=${black},bg=${purple}] #I #W${current_flags} "
+    tmux set-window-option -g window-status-current-format "#[fg=${black},bg=${pink}] #I #W${current_flags} "
   fi
 
   tmux set-window-option -g window-status-format "#[fg=${white}]#[bg=${gray}] #I #W${flags}"
