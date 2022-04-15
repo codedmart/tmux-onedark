@@ -27,18 +27,16 @@ main()
   IFS=' ' read -r -a plugins <<< $(get_tmux_option "@dracula-plugins" "battery network weather")
 
   # Dracula Color Pallette
-  black='#282c34'
-  white='#abb2bf'
-  gray='#5c6370'
-  dark_gray='#4b5263'
-  light_purple='#c678dd'
-  dark_purple='#61afef'
-  cyan='#56b6c2'
-  green='#98c379'
-  orange='#d19a66'
-  red='#be5046'
-  pink='#e06c75'
-  yellow='#e5c07b'
+  black='#272822'
+  white='#f8f8f8'
+  gray='#808080'
+  purple='#ae81ff'
+  cyan='#66d9ef'
+  green='#a6e22e'
+  orange='#ef5939'
+  red='#ff0000'
+  pink='#f92672'
+  yellow='#e6db74'
 
   # Handle left icon configuration
   case $show_left_icon in
@@ -83,8 +81,8 @@ main()
       flags=""
       current_flags="";;
     true)
-      flags="#{?window_flags,#[fg=${dark_purple}]#{window_flags},}"
-      current_flags="#{?window_flags,#[fg=${light_purple}]#{window_flags},}"
+      flags="#{?window_flags,#[fg=${purple}]#{window_flags},}"
+      current_flags="#{?window_flags,#[fg=${purple}]#{window_flags},}"
   esac
 
   # sets refresh interval to every 5 seconds
@@ -103,17 +101,17 @@ main()
 
   # pane border styling
   if $show_border_contrast; then
-    tmux set-option -g pane-active-border-style "fg=${light_purple}"
+    tmux set-option -g pane-active-border-style "fg=${purple}"
   else
-    tmux set-option -g pane-active-border-style "fg=${dark_purple}"
+    tmux set-option -g pane-active-border-style "fg=${purple}"
   fi
   tmux set-option -g pane-border-style "fg=${gray}"
 
   # message styling
-  tmux set-option -g message-style "bg=${dark_gray},fg=${white}"
+  tmux set-option -g message-style "bg=${gray},fg=${white}"
 
   # status bar
-  tmux set-option -g status-style "bg=${dark_gray},fg=${white}"
+  tmux set-option -g status-style "bg=${gray},fg=${white}"
 
   # Status left
   if $show_powerline; then
@@ -181,7 +179,7 @@ main()
     fi
 
     if [ $plugin = "time" ]; then
-      IFS=' ' read -r -a colors <<< $(get_tmux_option "@dracula-time-colors" "dark_purple black")
+      IFS=' ' read -r -a colors <<< $(get_tmux_option "@dracula-time-colors" "purple black")
       if $show_day_month && $show_military ; then # military time and dd/mm
         script="%a %d/%m %R ${timezone} "
       elif $show_military; then # only military time
@@ -203,12 +201,12 @@ main()
 
   # Window option
   if $show_powerline; then
-    tmux set-window-option -g window-status-current-format "#[fg=${black},bg=${dark_purple}]${left_sep}#[fg=${black},bg=${dark_purple}] #I #W${current_flags} #[fg=${dark_purple},bg=${gray}]${left_sep}"
+    tmux set-window-option -g window-status-current-format "#[fg=${black},bg=${purple}]${left_sep}#[fg=${black},bg=${purple}] #I #W${current_flags} #[fg=${purple},bg=${gray}]${left_sep}"
   else
-    tmux set-window-option -g window-status-current-format "#[fg=${black},bg=${dark_purple}] #I #W${current_flags} "
+    tmux set-window-option -g window-status-current-format "#[fg=${black},bg=${purple}] #I #W${current_flags} "
   fi
 
-  tmux set-window-option -g window-status-format "#[fg=${white}]#[bg=${dark_gray}] #I #W${flags}"
+  tmux set-window-option -g window-status-format "#[fg=${white}]#[bg=${gray}] #I #W${flags}"
   tmux set-window-option -g window-status-activity-style "bold"
   tmux set-window-option -g window-status-bell-style "bold"
 }
